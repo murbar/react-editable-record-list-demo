@@ -5,7 +5,7 @@ import capitalize from '../helpers/capitalize';
 const StyledHead = styled.thead`
   th {
     text-align: left;
-    padding: 0.25rem 0.5rem;
+    padding: 0.5rem;
     font-size: 1.1em;
   }
 `;
