@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import RecordField from './RecordField';
+import RecordsTableCell from './RecordsTableCell';
 
 const StyledRow = styled.tr`
   border-top: 1px solid #666;
@@ -11,14 +11,14 @@ const StyledRow = styled.tr`
   }
 `;
 
-const Record = ({ data }) => {
+const RecordsTableRow = ({ data }) => {
   return (
     <StyledRow>
       {Object.keys(data).map((key, i) => (
-        <RecordField key={i} data={data[key]} />
+        <RecordsTableCell key={i} data={data[key]} />
       ))}
     </StyledRow>
   );
 };
 
-export default Record;
+export default RecordsTableRow;

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Record from './Record';
+import RecordsTableRow from './RecordsTableRow';
 import pluralize from '../helpers/pluralize';
 import capitalize from '../helpers/capitalize';
 
@@ -16,7 +16,7 @@ const StyledTable = styled.table`
   }
 `;
 
-const RecordList = ({ recordStore }) => {
+const RecordsTable = ({ recordStore }) => {
   const count = recordStore.state.length;
 
   if (!count) return <div>No records</div>;
@@ -36,11 +36,11 @@ const RecordList = ({ recordStore }) => {
       </thead>
       <tbody>
         {recordStore.state.map(r => (
-          <Record key={r.id} data={r} />
+          <RecordsTableRow key={r.id} data={r} />
         ))}
       </tbody>
     </StyledTable>
   );
 };
 
-export default RecordList;
+export default RecordsTable;

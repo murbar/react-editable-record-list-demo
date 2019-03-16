@@ -9,8 +9,8 @@ const StyledCell = styled.td`
   }
 `;
 
-const RecordField = ({ data }) => {
+const RecordsTableCell = ({ data }) => {
   return <StyledCell>{data}</StyledCell>;
 };
 
-export default RecordField;
+export default RecordsTableCell;
