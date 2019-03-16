@@ -6,7 +6,8 @@ const useRecords = () => {
   const [history, setHistory] = useState([
     {
       state,
-      action: 'Initial state'
+      action: 'Initial state',
+      timestamp: Date.now()
     }
   ]);
 
