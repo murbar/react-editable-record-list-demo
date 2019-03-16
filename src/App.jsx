@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import generateRecords from './helpers/generateRecords';
 import useRecords from './hooks/useRecords';
@@ -14,14 +14,16 @@ const App = () => {
   // our mock network data store
   const store = useRecords();
 
-  const handleGenerate = () => {
-    store.setState(generateRecords(16));
-  };
+  useEffect(() => {
+    const data = generateRecords(16);
+    // console.log(data);
+    store.setState(data);
+  }, []);
 
   return (
     <StyledMain>
       <h1>Editable record list demo</h1>
-      <button onClick={handleGenerate}>Generate records</button>
+      <p>Usage instructions here</p>
       <RecordList recordStore={store} />
     </StyledMain>
   );
