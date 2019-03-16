@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import RecordsTableRow from './RecordsTableRow';
 import pluralize from '../helpers/pluralize';
-import capitalize from '../helpers/capitalize';
+import RecordsTableHead from './RecordsTableHead';
 
 const StyledTable = styled.table`
   width: 100%;
@@ -21,19 +21,13 @@ const RecordsTable = ({ recordStore }) => {
 
   if (!count) return <div>No records</div>;
 
-  const theadLabels = Object.keys(recordStore.state[0]);
+  const headerLabels = Object.keys(recordStore.state[0]);
   const countString = `${count} record${pluralize(count)}`;
 
   return (
     <StyledTable>
       <caption>{countString}</caption>
-      <thead>
-        <tr>
-          {theadLabels.map(k => (
-            <th key={k}>{capitalize(k)}</th>
-          ))}
-        </tr>
-      </thead>
+      <RecordsTableHead labels={headerLabels} />
       <tbody>
         {recordStore.state.map(r => (
           <RecordsTableRow key={r.id} data={r} />
