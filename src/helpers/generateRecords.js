@@ -1,7 +1,10 @@
 import faker from 'faker';
 
 const makeRecord = () => ({
-  name: faker.name.findName()
+  id: faker.random.uuid(),
+  name: faker.name.findName(),
+  company: faker.company.companyName(),
+  email: faker.internet.email()
 });
 
 export default function(n) {
