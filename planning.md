@@ -9,6 +9,17 @@ User can revert record to any of previous states
 Component persists change to store after record is changed
 Later: validate fields
 
+Two ways
+Table based components for tabular data fields
+Div based data field components that can be positioned arbitrarily
+
+Input type based on data type
+string -> input, textarea
+number -> number
+bool -> checkbox
+options -> select
+date -> date
+
 - RecordList
   - Props
     - array of records
