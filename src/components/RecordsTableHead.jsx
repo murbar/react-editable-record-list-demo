@@ -14,7 +14,7 @@ const RecordsTableHead = ({ fields, model }) => {
     <StyledHead>
       <tr>
         {fields.map(field => (
-          <th key={field}>{model[field].label}</th>
+          <th key={field}>{model[field].label || field}</th>
         ))}
       </tr>
     </StyledHead>
