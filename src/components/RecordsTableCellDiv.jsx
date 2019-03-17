@@ -13,6 +13,10 @@ const StyledDiv = styled.div`
     height: 100%;
     font-size: 1rem;
     user-select: none;
+    background: ${props =>
+      props.required && !props.dataValue ? 'rgba(255,0,0,0.15)' : 'transparent'};
+    font-style: ${props => (props.required && !props.dataValue ? 'italic' : 'normal')};
+    color: ${props => (props.required && !props.dataValue ? '#777' : 'inherit')};
   }
   .editor {
     width: 100%;
@@ -24,14 +28,19 @@ const StyledDiv = styled.div`
       border: none;
       appearance: none;
       font-family: inherit;
-      background: rgba(255, 255, 255, 0.1);
+      background: ${props =>
+        props.required && !props.inputValue ? 'rgba(255,0,0,0.15)' : 'rgba(255, 255, 255, 0.1)'};
       width: 100%;
       color: inherit;
       outline: none;
+      &::placeholder {
+        font-style: italic;
+        color: #777;
+      }
     }
   }
   .action {
-    /* display: none; */
+    display: none;
     background: #333;
     width: 1.4rem;
     height: 1.4rem;
@@ -39,8 +48,6 @@ const StyledDiv = styled.div`
     border-radius: 50%;
     top: calc(50% - 0.7rem);
     right: -0.4rem;
-    transform: scale(0);
-    transition: scale 200ms;
     img {
       filter: invert(1);
       width: 0.9rem;
@@ -52,19 +59,21 @@ const StyledDiv = styled.div`
   }
   &:hover .action {
     display: flex;
-    transform: scale(1);
   }
 `;
 
 const RecordsTableCell = ({ data, reportEdit }) => {
   const initialValue = data.value;
+  const required = data.required || false;
   const [isEditMode, toggleEditMode] = useToggle();
   const [dataValue, setDataValue] = useState(initialValue);
   const [inputValue, setInputValue] = useState(initialValue);
   const modified = dataValue !== initialValue;
 
   useEffectOnUpdate(() => {
-    reportEdit(dataValue);
+    if (!required || (required && dataValue)) {
+      reportEdit(dataValue);
+    }
   }, [dataValue]);
 
   const completeEdit = () => {
@@ -94,12 +103,13 @@ const RecordsTableCell = ({ data, reportEdit }) => {
   };
 
   return (
-    <StyledDiv>
+    <StyledDiv dataValue={dataValue} required={required} inputValue={inputValue}>
       {isEditMode ? (
         <div className="editor">
           <input
             type="text"
             name={data.key}
+            placeholder={data.key}
             value={inputValue}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
@@ -109,7 +119,7 @@ const RecordsTableCell = ({ data, reportEdit }) => {
         </div>
       ) : (
         <div className="viewer" onDoubleClick={toggleEditMode}>
-          {dataValue}
+          {dataValue || data.key}
         </div>
       )}
       {modified && (
