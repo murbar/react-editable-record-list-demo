@@ -10,6 +10,7 @@ const StyledCell = styled.td`
     border-right: none;
   }
   position: relative;
+  overflow: hidden;
   .viewer {
     padding: 0.25rem 0.5rem;
     width: 100%;
@@ -18,8 +19,8 @@ const StyledCell = styled.td`
     user-select: none;
     background: ${props =>
       props.required && !props.dataValue ? 'rgba(255,0,0,0.15)' : 'transparent'};
-    font-style: ${props => (props.required && !props.dataValue ? 'italic' : 'normal')};
-    color: ${props => (props.required && !props.dataValue ? '#777' : 'inherit')};
+    font-style: ${props => (!props.dataValue ? 'italic' : 'normal')};
+    color: ${props => (!props.dataValue ? '#777' : 'inherit')};
   }
   .editor {
     width: 100%;
