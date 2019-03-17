@@ -1,3 +1,11 @@
+# TODO
+
+- press TAB to move to next field
+- possibly made edit mode active for whole record, for
+- inputs for number, bool, and choice
+
+# Features
+
 User is presented with a list of record rows
 User can add a new record
 User can delete a record
@@ -9,16 +17,20 @@ User can revert record to any of previous states
 Component persists change to store after record is changed
 Later: validate fields
 
-Two ways
+## Two ways
+
 Table based components for tabular data fields
 Div based data field components that can be positioned arbitrarily
 
-Input type based on data type
+## Input type based on data type
+
 string -> input, textarea
 number -> number
 bool -> checkbox
 options -> select
 date -> date
+
+# Components
 
 - RecordList
   - Props
