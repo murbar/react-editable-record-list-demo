@@ -26,13 +26,22 @@ const RecordsTable = ({ recordStore, recordModel }) => {
   const recordFields = Object.keys(recordStore.state[0]);
   const countString = `${count} record${pluralize(count)}`;
 
+  const actions = {
+    handleRecordUpdate: record => {
+      console.log('RECORD MODIFIED', record);
+    },
+    handleRecordDelete: recordId => {
+      console.log('RECORD DELETED', recordId);
+    }
+  };
+
   return (
     <StyledTable>
       <caption>{countString}</caption>
       <RecordsTableHead fields={recordFields} model={recordModel} />
       <tbody>
         {recordStore.state.map(r => (
-          <RecordsTableRow key={r.id} data={r} />
+          <RecordsTableRow key={r.id} data={r} actions={actions} model={recordModel} />
         ))}
       </tbody>
     </StyledTable>

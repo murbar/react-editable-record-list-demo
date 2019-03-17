@@ -11,11 +11,16 @@ const StyledRow = styled.tr`
   }
 `;
 
-const RecordsTableRow = ({ data }) => {
+const RecordsTableRow = ({ data, model, actions }) => {
   return (
     <StyledRow>
       {Object.keys(data).map((key, i) => (
-        <RecordsTableCell key={i} data={data[key]} />
+        <RecordsTableCell
+          key={i}
+          data={{ key, value: data[key] }}
+          onUpdate={actions.handleRecordUpdate}
+          onDelete={actions.handleRecordDelete}
+        />
       ))}
     </StyledRow>
   );
