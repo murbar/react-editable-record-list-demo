@@ -12,7 +12,7 @@ const StyledCell = styled.td`
   position: relative;
   overflow: hidden;
   .viewer {
-    padding: 0.25rem 0.5rem;
+    padding: 0.5rem;
     width: 100%;
     height: 100%;
     font-size: 1rem;
@@ -26,7 +26,7 @@ const StyledCell = styled.td`
     width: 100%;
     height: 100%;
     input {
-      padding: 0.25rem 0.5rem;
+      padding: 0.5rem;
       font-size: inherit;
       padding: none;
       border: none;
