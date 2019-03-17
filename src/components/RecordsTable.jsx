@@ -18,18 +18,18 @@ const StyledTable = styled.table`
   }
 `;
 
-const RecordsTable = ({ recordStore }) => {
+const RecordsTable = ({ recordStore, recordModel }) => {
   const count = recordStore.state.length;
 
   if (!count) return <div>No records</div>;
 
-  const headerLabels = Object.keys(recordStore.state[0]);
+  const recordFields = Object.keys(recordStore.state[0]);
   const countString = `${count} record${pluralize(count)}`;
 
   return (
     <StyledTable>
       <caption>{countString}</caption>
-      <RecordsTableHead labels={headerLabels} />
+      <RecordsTableHead fields={recordFields} model={recordModel} />
       <tbody>
         {recordStore.state.map(r => (
           <RecordsTableRow key={r.id} data={r} />

@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import capitalize from '../helpers/capitalize';
 
 const StyledHead = styled.thead`
   th {
@@ -10,12 +9,12 @@ const StyledHead = styled.thead`
   }
 `;
 
-const RecordsTableHead = ({ labels }) => {
+const RecordsTableHead = ({ fields, model }) => {
   return (
     <StyledHead>
       <tr>
-        {labels.map(k => (
-          <th key={k}>{capitalize(k)}</th>
+        {fields.map(field => (
+          <th key={field}>{model[field].label}</th>
         ))}
       </tr>
     </StyledHead>
