@@ -68,6 +68,7 @@ const StyledCell = styled.td`
 const RecordsTableCell = ({ data, reportEdit }) => {
   const initialValue = data.value;
   const required = data.required || false;
+  const placeholder = data.label || data.key;
   const [isEditMode, toggleEditMode] = useToggle();
   const [dataValue, setDataValue] = useState(initialValue);
   const [inputValue, setInputValue] = useState(initialValue);
@@ -112,7 +113,7 @@ const RecordsTableCell = ({ data, reportEdit }) => {
           <input
             type="text"
             name={data.key}
-            placeholder={data.key}
+            placeholder={placeholder}
             value={inputValue}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
@@ -122,7 +123,7 @@ const RecordsTableCell = ({ data, reportEdit }) => {
         </div>
       ) : (
         <div className="viewer" onDoubleClick={toggleEditMode}>
-          {dataValue || data.key}
+          {dataValue || placeholder}
         </div>
       )}
       {modified && (
