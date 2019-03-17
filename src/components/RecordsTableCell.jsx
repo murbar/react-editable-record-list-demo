@@ -126,7 +126,7 @@ const RecordsTableCell = ({ data, reportEdit }) => {
         </div>
       )}
       {modified && (
-        <div onClick={revertEdit} className="action revert">
+        <div onClick={revertEdit} className="action revert" title="Revert field">
           <img src="/icons/revert.svg" alt="Revert" />
         </div>
       )}
