@@ -20,6 +20,7 @@ const RecordsTableRow = ({ data, model, actions }) => {
     <StyledRow>
       {Object.keys(data).map((field, i) => {
         const hidden = model[field].hidden || false;
+
         if (!hidden)
           return (
             <RecordsTableCell
@@ -33,6 +34,8 @@ const RecordsTableRow = ({ data, model, actions }) => {
               onFieldUpdate={handleFieldUpdate}
             />
           );
+
+        return null;
       })}
     </StyledRow>
   );

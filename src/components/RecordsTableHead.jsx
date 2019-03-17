@@ -16,6 +16,7 @@ const RecordsTableHead = ({ fields, model }) => {
         {fields.map(field => {
           const hidden = model[field].hidden || false;
           const required = model[field].required || false;
+
           if (!hidden)
             return (
               <th key={field}>
@@ -23,6 +24,8 @@ const RecordsTableHead = ({ fields, model }) => {
                 {required && ' *'}
               </th>
             );
+
+          return null;
         })}
       </tr>
     </StyledHead>
