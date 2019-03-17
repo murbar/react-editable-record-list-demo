@@ -4,10 +4,12 @@ import RecordsTableRow from './RecordsTableRow';
 import pluralize from '../helpers/pluralize';
 import RecordsTableHead from './RecordsTableHead';
 
+// https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_boxes/Styling_tables
 const StyledTable = styled.table`
   width: 100%;
   margin: 1rem 0;
   border-collapse: collapse;
+  table-layout: fixed;
   caption {
     text-align: left;
     font-size: 1.5rem;
