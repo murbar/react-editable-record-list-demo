@@ -65,7 +65,7 @@ const StyledCell = styled.td`
   }
 `;
 
-const RecordsTableCell = ({ data, reportEdit }) => {
+const RecordsTableCell = ({ data, onFieldUpdate }) => {
   const initialValue = data.value;
   const required = data.required || false;
   const placeholder = data.label || data.key;
@@ -76,7 +76,7 @@ const RecordsTableCell = ({ data, reportEdit }) => {
 
   useEffectOnUpdate(() => {
     if (!required || (required && dataValue)) {
-      reportEdit(dataValue);
+      onFieldUpdate(dataValue);
     }
   }, [dataValue]);
 
